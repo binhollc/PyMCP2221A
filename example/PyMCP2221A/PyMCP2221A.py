@@ -155,10 +155,10 @@ class PyMCP2221A:
         buf[7 + 1] = 0x80  # Alter GPIO configuration: alters the current GP designation
         #   datasheet says this should be 1, but should actually be 0x80
 
-        buf[8 + 1] = self.GPIO_0_BIT << 4 | self.GPIO_0_DIR << 3 | self.GPIO_0_MODE  # GP0 settings
-        buf[9 + 1] = self.GPIO_1_BIT << 4 | self.GPIO_1_DIR << 3 | self.GPIO_1_MODE  # GP0 settings
-        buf[10 + 1] = self.GPIO_2_BIT << 4 | self.GPIO_2_DIR << 3 | self.GPIO_2_MODE  # GP0 settings
-        buf[11 + 1] = self.GPIO_3_BIT << 4 | self.GPIO_3_DIR << 3 | self.GPIO_3_MODE  # GP0 settings
+        buf[8 + 1] = (self.GPIO_0_BIT << 4 | self.GPIO_0_DIR << 3 | self.GPIO_0_MODE) & 0xff  # GP0 settings
+        buf[9 + 1] = (self.GPIO_1_BIT << 4 | self.GPIO_1_DIR << 3 | self.GPIO_1_MODE) & 0xff  # GP0 settings
+        buf[10 + 1] = (self.GPIO_2_BIT << 4 | self.GPIO_2_DIR << 3 | self.GPIO_2_MODE) & 0xff  # GP0 settings
+        buf[11 + 1] = (self.GPIO_3_BIT << 4 | self.GPIO_3_DIR << 3 | self.GPIO_3_MODE) & 0xff  # GP0 settings
         # print (buf)
         # for(i in range(64)):
         #    buf[i] = rbuf[i] | buf[i]
